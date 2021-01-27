@@ -3,10 +3,23 @@
 <p>
     <a asp-controller="Events" asp-action="Add">Add Event</a>
 </p>
-
-<ul>
-    @foreach (string meeting in ViewBag.events)
-    {
-        <li>@meeting</li>
-    }
-</ul>
+@if (ViewBag.events.Count == 0)
+{
+    <p>No events yet!</p>
+}
+else
+{
+    <table>
+        <tr>
+            <th>Event</th>
+            <th>Description</th>
+        </tr>
+        @foreach (KeyValuePair<string, string> item in ViewBag.events)
+        {
+            <tr>
+                <td>@item.Key</td>
+                <td>@item.Value</td>
+            </tr>
+        }
+    </table>
+}
