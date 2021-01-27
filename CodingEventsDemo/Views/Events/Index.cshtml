@@ -7,16 +7,17 @@
 }
 else
 {
-    <table>
+
+    <table class="table table-striped ">
         <tr>
             <th>Event</th>
             <th>Description</th>
         </tr>
-        @foreach (KeyValuePair<string, string> item in ViewBag.events)
+        @foreach (KeyValuePair<string, string> meeting in ViewBag.events)
         {
             <tr>
-                <td>@item.Key</td>
-                <td>@item.Value</td>
+                <td>@meeting.Key</td>
+                <td>@meeting.Value</td>
             </tr>
         }
     </table>
