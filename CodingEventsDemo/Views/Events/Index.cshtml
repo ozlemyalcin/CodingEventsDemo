@@ -11,7 +11,7 @@
 }
 else
 {
-    <table class="table">
+    <table class="table table-striped table-bordered">
         <tr>
             <th>
                 Name
@@ -23,8 +23,9 @@ else
         @foreach (var evt in ViewBag.events)
         {
             <tr>
-                <td>@evt.Key</td>
-                <td>@evt.Value</td>
+                <td>@evt.Name</td>
+                <td>@evt.Description</td>
+                
             </tr>
         }
     </table>
