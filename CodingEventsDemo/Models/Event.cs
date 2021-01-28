@@ -4,18 +4,22 @@ namespace CodingEventsDemo.Models
     public class Event
     {
         public string Name { get; set; }
+       
         public string Description { get; set; }
 
         public int Id { get; set; }
         private static int nextId = 1;
 
-
-        public Event(string name, string description)
+        public Event()
+        {
+            this.Id = nextId;
+            nextId++;
+        }
+        public Event(string name, string description):this()
         {
             this.Name = name;
             this.Description = description;
-            this.Id = nextId;
-            nextId++;
+            
         }
 
         public override string ToString()
