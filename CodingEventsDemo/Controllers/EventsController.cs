@@ -30,12 +30,30 @@ namespace coding_events_practice.Controllers
 
         [HttpPost]
         [Route("Events/Add")]
-        public IActionResult NewEvent(string name, string desc)
+        public IActionResult NewEvent(string name, string description)
         {
-            EventData.Add(new Event(name, desc));
+            EventData.Add(new Event(name, description));
             
 
             return Redirect("/Events");
+        }
+
+        [HttpGet]
+        public IActionResult Delete()
+        {
+            ViewBag.events = EventData.GetAll();
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Delete(int[] eventIds) //checkbox name=eventsIds
+        {
+            foreach(int id in eventIds)
+            {
+                EventData.Remove(id);
+            }
+            return Redirect("/Events");
+
         }
     }
 }
