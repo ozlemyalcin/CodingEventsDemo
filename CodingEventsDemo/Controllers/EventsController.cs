@@ -4,8 +4,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using CodingEventsDemo.Data;
 using CodingEventsDemo.Models;
-using CodingEventsDemo.ViewModels;
 using Microsoft.AspNetCore.Mvc;
+using CodingEventsDemo.ViewModels;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -17,6 +17,8 @@ namespace coding_events_practice.Controllers
         // GET: /<controller>/
         public IActionResult Index()
         {
+            // ViewBag.events = EventData.GetAll();
+
             List<Event> events = new List<Event>(EventData.GetAll());
 
             return View(events);
@@ -24,27 +26,40 @@ namespace coding_events_practice.Controllers
 
         public IActionResult Add()
         {
+            //Create blank AddEventViewModel to associate with the Form in Add.cshtml
             AddEventViewModel addEventViewModel = new AddEventViewModel();
-
             return View(addEventViewModel);
         }
 
         [HttpPost]
-        public IActionResult Add(AddEventViewModel addEventViewModel)
+        //[Route("Events/Add")]
+        public IActionResult Add(AddEventViewModel viewModel)
         {
-            Event newEvent = new Event
-            {
-                Name = addEventViewModel.Name,
-                Description = addEventViewModel.Description
-            };
+            //Imagine doing lots of data validation on the viewModel first
 
-            EventData.Add(newEvent);
-      
-            return Redirect("/Events");
+            if (ModelState.IsValid)
+            {
+                Event newEvent = new Event
+                {
+                    Name = viewModel.Name,
+                    Description = viewModel.Description,
+                    ContactEmail = viewModel.ContactEmail
+
+                };
+                EventData.Add(newEvent);
+
+                return Redirect("/Events");
+
+            }
+            //viewModel is NOT valid!
+            return View(viewModel);
+
+           
         }
 
         public IActionResult Delete()
         {
+            //ViewBag.title = "Delete Events";
             ViewBag.events = EventData.GetAll();
 
             return View();
