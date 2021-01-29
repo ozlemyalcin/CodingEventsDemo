@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using CodingEventsDemo.Data;
 using CodingEventsDemo.Models;
 using Microsoft.AspNetCore.Mvc;
+using CodingEventsDemo.ViewModels;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -16,14 +17,18 @@ namespace coding_events_practice.Controllers
         // GET: /<controller>/
         public IActionResult Index()
         {
-            ViewBag.events = EventData.GetAll();
+            // ViewBag.events = EventData.GetAll();
 
-            return View();
+            List<Event> events = new List<Event>(EventData.GetAll());
+
+            return View(events);
         }
 
         public IActionResult Add()
         {
-            return View();
+            //Create blank AddEventViewModel to associate with the Form in Add.cshtml
+            AddEvenViewModel addEvenViewModel = new AddEvenViewModel();
+            return View(addEvenViewModel);
         }
 
         [HttpPost]

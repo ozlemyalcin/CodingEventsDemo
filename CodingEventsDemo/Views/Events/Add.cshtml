@@ -1,13 +1,24 @@
-﻿<h1>Add Event</h1>
+﻿@using CodingEventsDemo.ViewModels
 
-<form method="post">
+
+@model AddEvenViewModel
+
+@*Refer to AddEventViewModel object that was passed in as :Model *@
+
+
+
+
+
+<h1>Add Event</h1>
+
+<form method="post" asp-controller="Events" asp-action="Add">
     <div class="form-group">
-        <label for="name">Name</label>
-        <input name="name" type="text" />
+        <label asp-for="Name"></label>
+        <input asp-for="Name" class="form-group"/>
     </div>
     <div class="form-group">
-        <label for="description">Description</label>
-        <input name="description" />
+        <label asp-for="Description"></label>
+        <input asp-for="Description" class="form-group"/>
     </div>
     <input type="submit" value="Add Event" />
 </form>
