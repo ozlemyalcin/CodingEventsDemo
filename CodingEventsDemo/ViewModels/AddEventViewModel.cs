@@ -14,6 +14,15 @@ namespace CodingEventsDemo.ViewModels
         public string Description { get; set; }
 
         [EmailAddress]
+        [Required]
         public string ContactEmail { get; set; }
+
+        [Required(ErrorMessage ="Please enter the place of the event")]
+        [StringLength(50,ErrorMessage ="Must be less than 50 characters")]
+        public string Place { get; set; }
+
+        [Required]
+        [Range(0,10000)]
+        public int NumOfParticipant { get; set; }
     }
 }

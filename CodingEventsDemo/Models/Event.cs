@@ -9,15 +9,21 @@ namespace CodingEventsDemo.Models
 
         public string Description { get; set; }
         public string ContactEmail { get; set; }
+        public string Place { get; set; }
+        public int NumOfParticipant { get; set; }
+
 
         public int Id { get; }
         static private int nextId = 1;
 
-        public Event(string name, string description, string contactEmail):this()
+        public Event(string name, string description, string contactEmail,string place, int numOfParticipant):this()
         {
             Name = name;
             Description = description;
-            this.ContactEmail = contactEmail;
+            ContactEmail = contactEmail;
+            Place = place;
+            NumOfParticipant = numOfParticipant;
+
         }
 
         public Event()
