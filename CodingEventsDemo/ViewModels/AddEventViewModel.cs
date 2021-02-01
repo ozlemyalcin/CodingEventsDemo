@@ -1,5 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using CodingEventsDemo.Models;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace CodingEventsDemo.ViewModels
 {
@@ -15,5 +18,18 @@ namespace CodingEventsDemo.ViewModels
 
         [EmailAddress]
         public string ContactEmail { get; set; }
+
+        public EventType Type { get; set; }
+
+        public List<SelectListItem> EventTypes = new List<SelectListItem>
+        {
+            new SelectListItem(EventType.Conference.ToString(),((int)EventType.Conference).ToString()),
+            new SelectListItem(EventType.Meetup.ToString(),((int)EventType.Meetup).ToString()),
+            new SelectListItem(EventType.WorkShop.ToString(),((int)EventType.WorkShop).ToString()),
+            new SelectListItem(EventType.Social.ToString(),((int)EventType.Social).ToString())
+
+        };
+
+
     }
 }
