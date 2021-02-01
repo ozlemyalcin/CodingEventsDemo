@@ -1,0 +1,34 @@
+﻿
+
+@using CodingEventsDemo.ViewModels
+
+@model EditEventViewModel
+
+@* @Model: variable pointing to insance of EditEventViewModel*@
+
+<h1>Edit Event: @Model.Name</h1>
+
+<form method="post" asp-controller="Events" asp-action="Edit">
+    <input type="hidden" asp-for="Id"/>
+
+    <div class="form-group">
+        <label asp-for="Name"></label>
+        <input asp-for="Name" class="form-control" />
+        <span asp-validation-for="Name"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Description"></label>
+        <input asp-for="Description" class="form-control" />
+        <span asp-validation-for="Description"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="ContactEmail">Contact Email</label>
+        <input asp-for="ContactEmail" class="form-control" />
+        <span asp-validation-for="ContactEmail"></span>
+    </div>
+
+    <input type="submit" value="Edit Event" />
+
+
+
+</form>

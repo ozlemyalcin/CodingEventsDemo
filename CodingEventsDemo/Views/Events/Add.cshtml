@@ -1,7 +1,7 @@
 ﻿@using CodingEventsDemo.ViewModels
 
 
-@model AddEvenViewModel
+@model AddEventViewModel
 
 @*Refer to AddEventViewModel object that was passed in as :Model *@
 
@@ -14,11 +14,16 @@
 <form method="post" asp-controller="Events" asp-action="Add">
     <div class="form-group">
         <label asp-for="Name"></label>
-        <input asp-for="Name" class="form-group"/>
+        <input asp-for="Name" class="form-group" />
     </div>
     <div class="form-group">
         <label asp-for="Description"></label>
-        <input asp-for="Description" class="form-group"/>
+        <input asp-for="Description" class="form-group" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="ContactEmail">Contact Email</label>
+        <input asp-for="ContactEmail" class="form-group" />
     </div>
     <input type="submit" value="Add Event" />
 </form>
