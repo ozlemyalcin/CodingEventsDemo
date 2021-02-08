@@ -21,6 +21,8 @@ namespace CodingEventsDemo.ViewModels
 
         public EventType Type { get; set; }
 
+        
+
         public List<SelectListItem> EventTypes { get; set;  } = new List<SelectListItem>
         {
             new SelectListItem(EventType.Conference.ToString(), ((int)EventType.Conference).ToString()),
