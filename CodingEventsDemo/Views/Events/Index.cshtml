@@ -29,21 +29,23 @@ else
                 Description
             </th>
             <th>
-                Contact Email
+                Category
             </th>
             <th>
-                Event Type
+                Contact Email
             </th>
+
         </tr>
         @foreach (var evt in Model)
         {
-            <tr>
-                <td>@evt.Id</td>
-                <td>@evt.Name</td>
-                <td>@evt.Description</td>
-                <td>@evt.ContactEmail</td>
-                <td>@evt.Type</td>
-            </tr>
+    <tr>
+        <td>@evt.Id</td>
+        <td>@evt.Name</td>
+        <td>@evt.Description</td>
+        <td>@evt.Category.Name</td>
+        <td>@evt.ContactEmail</td>
+
+    </tr>
         }
     </table>
 }
